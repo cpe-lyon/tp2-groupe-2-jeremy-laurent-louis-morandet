@@ -92,3 +92,43 @@ unset permet de supprimer la variable d'environnement, donc elle n'existera plus
     user@ubuntu-serverirc13:~$ . progm.sh
     $HOME = /home/user
     user@ubuntu-serverirc13:~$
+    
+## Programmation Bash
+*Vous enregistrerez vos scripts dans un dossier script que vous créerez dans votre répertoire personnel. Tous les scripts sont bien entendu à tester. Ajoutez le chemin vers script à votre PATH de manière permanente.*
+
+    mkdir script
+    PATH=$PATH:~/script
+    user@ubuntu-serverirc13:~$ cd script/
+    user@ubuntu-serverirc13:~/script$
+
+
+## Exercice 2  Contrôle de mot de passe
+
+*1. Écrivez un script testpwd.sh qui demande de saisir un mot de passe et vérifie s’il correspond ou non au contenu d’une variable PASSWORD dont le contenu est codé en dur dans le script. Le mot de passe saisi par l’utilisateur ne doit pas s’afficher.*
+
+    
+    PASSWORD="Pwd"
+    read -s -p "Mot de passe?" saisie
+
+    if [ $saisie = $PASSWORD ] ; then
+      echo -e "\nSuper c'est correct !"
+    else
+      echo -e "\nMauvais mot de passe !"
+    fi
+    
+Il ne faut pas oublier de changer les droits
+
+    user@ubuntu-serverirc13:~/script$ chmod +x testpwd.sh
+    user@ubuntu-serverirc13:~/script$ ./testpwd.sh
+    Mot de passe?
+    Super c'est correct !
+    
+Note: le -s permet de ne pas afficher le texte saisi par l'utilisateur.
+
+
+
+    
+
+
+
+
