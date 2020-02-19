@@ -161,6 +161,44 @@ Note : $? permet de recuperer le code d'erreur de la fonction précédente.
 ## Exercice 4. Contrôle d’utilisateur
 *Écrivez un script qui vérifie l’existence d’un utilisateur dont le nom est donné en paramètre du script. Si le script est appelé sans nom d’utilisateur, il affiche le message : ”Utilisation : nom_du_script nom_utilisateur”, où nom_du_script est le nom de votre script récupéré automatiquement (si vous changez le nom de votre script, le message doit changer automatiquement)*
 
+    #!/bin/bash
+        function checkuser(){
+        if [ -z $1 ]; then
+                var=$0
+                NB_SLASH=${var//[^\/]}
+                NAME=$(echo $0 | cut -d/ -f $((${#NB_SLASH}+1)))
+                echo -e "\n Utilisation : $NAME nom_utilisateur"
+                return 1
+        fi
+
+        if id -u $1 >/dev/null 2>&1; then
+                echo -e "\n cet utilisateur existe"
+        else
+                echo -e "\n cet utilisateur n'existe pas !"
+        fi
+        }
+        checkuser $1
+
+## Exercice 5. Factorielle
+*Écrivez un programme qui calcule la factorielle d’un entier naturel passé en paramètre (on supposera que l’utilisateur saisit toujours un entier naturel).*
+
+    #!/bin/bash
+    function factorielle()
+    {
+        if [ $1 -eq 0 ]; then
+            echo 1;
+        elif [ $1 -lt 0 ]; then
+            echo "Votre nombre doit être au moins égal à 0"
+        else
+            res=1
+            for i in `seq 1 $1`;do
+              let "res = res*i"
+            done
+            echo $res
+        fi
+    }
+    factorielle $1
+    
 ## Exercice 6. Le juste prix
 *Écrivez un script qui génère un nombre aléatoire entre 1 et 1000 et demande à l’utilisateur de le deviner. Le programme écrira ”C’est plus !”, ”C’est moins !” ou ”Gagné !” selon les cas (vous utiliserez $RANDOM).*
 
