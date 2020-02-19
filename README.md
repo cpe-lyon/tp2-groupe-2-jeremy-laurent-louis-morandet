@@ -209,8 +209,9 @@ Opérations sur les chaines de caractères :
 | -z "$chaine" | Teste si la chaîne est vide |
 | -n "$chaine" | Teste si la chaîne est non vide |
 
+Opérations logiques :
 | Condition | Signification |
 |--|--|
-| -a | ET |
-| -o | OU |
-| ! | NON |
+| test1 -a  test2 | test1 ET test2 |
+| test1 -o  test2 | test1 OU test2 |
+| ! test | NON test |
