@@ -149,7 +149,7 @@ est un nombre réel :*
             echo "Erreur"
     fi
 
-Note : &? permet de recuperer le code d'erreur de la fonction précédente. 
+Note : $? permet de recuperer le code d'erreur de la fonction précédente. 
 
 0 -> tout s'est bien passé
 
