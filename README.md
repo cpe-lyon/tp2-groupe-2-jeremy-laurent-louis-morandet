@@ -104,7 +104,7 @@ unset permet de supprimer la variable d'environnement, donc elle n'existera plus
 
 ## Exercice 2  Contrôle de mot de passe
 
-*1. Écrivez un script testpwd.sh qui demande de saisir un mot de passe et vérifie s’il correspond ou non au contenu d’une variable PASSWORD dont le contenu est codé en dur dans le script. Le mot de passe saisi par l’utilisateur ne doit pas s’afficher.*
+*Écrivez un script testpwd.sh qui demande de saisir un mot de passe et vérifie s’il correspond ou non au contenu d’une variable PASSWORD dont le contenu est codé en dur dans le script. Le mot de passe saisi par l’utilisateur ne doit pas s’afficher.*
 
     
     PASSWORD="Pwd"
@@ -125,8 +125,40 @@ Il ne faut pas oublier de changer les droits
     
 Note: read -s permet de ne pas afficher le texte saisi par l'utilisateur.
 
+## Exercice 3 
+
+*Ecrivez un script qui prend un paramètre et utilise la fonction suivante pour vérifier que ce paramètre
+est un nombre réel :*
+    
+    #!/bin/bash
+    
+    function is_number()
+    {
+            re='^[+-]?[0-9]+([.][0-9]+)?$'
+            if ! [[ $1 =~ $re ]] ; then
+                    return 1
+            else
+                    return 0
+            fi
+    }
+
+    is_number $1
+    if [[ $? = 0 ]] ; then
+            echo "Nombre rationel"
+    else
+            echo "Erreur"
+    fi
+
+Note : &? permet de recuperer le code d'erreur de la fonction précédente. 
+
+0 -> tout s'est bien passé
+
+1 -> erreur n°1
+
+2 -> erreur n°2
+
 ## Exercice 4. Contrôle d’utilisateur
-*1. Écrivez un script qui vérifie l’existence d’un utilisateur dont le nom est donné en paramètre du script. Si le script est appelé sans nom d’utilisateur, il affiche le message : ”Utilisation : nom_du_script nom_utilisateur”, où nom_du_script est le nom de votre script récupéré automatiquement (si vous changez le nom de votre script, le message doit changer automatiquement)*
+*Écrivez un script qui vérifie l’existence d’un utilisateur dont le nom est donné en paramètre du script. Si le script est appelé sans nom d’utilisateur, il affiche le message : ”Utilisation : nom_du_script nom_utilisateur”, où nom_du_script est le nom de votre script récupéré automatiquement (si vous changez le nom de votre script, le message doit changer automatiquement)*
 
 
 
