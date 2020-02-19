@@ -1,5 +1,5 @@
 # TP 2 : (LAURENT - MORANDET)
-## Exercice 1 Variables d’environnement
+## Exercice 1. Variables d’environnement
 *1. Dans quels dossiers bash trouve-t-il les commandes tapées par l’utilisateur ?*
 
 En tapant la commande:
@@ -102,10 +102,9 @@ unset permet de supprimer la variable d'environnement, donc elle n'existera plus
     user@ubuntu-serverirc13:~/script$
 
 
-## Exercice 2  Contrôle de mot de passe
+## Exercice 2.  Contrôle de mot de passe
 
 *Écrivez un script testpwd.sh qui demande de saisir un mot de passe et vérifie s’il correspond ou non au contenu d’une variable PASSWORD dont le contenu est codé en dur dans le script. Le mot de passe saisi par l’utilisateur ne doit pas s’afficher.*
-
     
     PASSWORD="Pwd"
     read -s -p "Mot de passe?" saisie
@@ -125,7 +124,7 @@ Il ne faut pas oublier de changer les droits
     
 Note: read -s permet de ne pas afficher le texte saisi par l'utilisateur.
 
-## Exercice 3 
+## Exercice 3. Expressions rationnelles
 
 *Ecrivez un script qui prend un paramètre et utilise la fonction suivante pour vérifier que ce paramètre
 est un nombre réel :*
@@ -160,10 +159,58 @@ Note : $? permet de recuperer le code d'erreur de la fonction précédente.
 ## Exercice 4. Contrôle d’utilisateur
 *Écrivez un script qui vérifie l’existence d’un utilisateur dont le nom est donné en paramètre du script. Si le script est appelé sans nom d’utilisateur, il affiche le message : ”Utilisation : nom_du_script nom_utilisateur”, où nom_du_script est le nom de votre script récupéré automatiquement (si vous changez le nom de votre script, le message doit changer automatiquement)*
 
+## Exercice 6. Le juste prix
+*Écrivez un script qui génère un nombre aléatoire entre 1 et 1000 et demande à l’utilisateur de le deviner. Le programme écrira ”C’est plus !”, ”C’est moins !” ou ”Gagné !” selon les cas (vous utiliserez $RANDOM).*
 
+Note : Rajout passage en parametre d'une borne maximale. $RANDOM envoie un nombre entier compris entre 0 - 32767
+'''
+    #!/bin/bash
 
-    
+    if [ $# -ge 1 ] ; then
+            prix=$(($RANDOM%$1))
+    else
+            prix=$RANDOM
+    fi
 
+    read -p "Entrez un prix : " reponse
 
+    while [ $prix -ne $reponse ]
+    do
+            if [ $prix -gt $reponse ] ; then
+                    echo "C'est plus !"
+            else
+                    echo "C'est moins !"
+            fi
 
+            read -p "Entrez un prix : " reponse
+    done
 
+    echo "C'est gagné !!!!!"
+'''
+
+Note : Tableaux Récapitulatif des opérateurs logiques
+
+Opérations sur les nombres :
+| Condition | Signification |
+|--|--|
+| $num1 -eq $num2 | Teste si les deux nombres sont égaux |
+| $num1 -ne $num2 | Teste si les deux nombres sont différents |
+| $num1 -lt $num2 | Teste si num1 < num2 |
+| $num1 -le $num2 | Teste si num1 ≤ num2 |
+| $num1 -gt $num2 | Teste si num1 > num2 |
+| $num1 -ge $num2 | Teste si num1 ≥ num2 |
+| $num1 -ge $num2 | Teste si num1 ≥ num2 |
+
+Opérations sur les chaines de caractères :
+| Condition | Signification |
+|--|--|
+| "$chaine1" = "$chaine2" | Teste si les deux chaînes sont identiques (sensible à la casse) |
+| "$chaine1" != "$chaine2" | Teste si les deux chaînes sont différentes |
+| -z "$chaine" | Teste si la chaîne est vide |
+| -n "$chaine" | Teste si la chaîne est non vide |
+
+| Condition | Signification |
+|--|--|
+| -a | ET |
+| -o | OU |
+| ! | NON |
