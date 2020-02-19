@@ -123,7 +123,10 @@ Il ne faut pas oublier de changer les droits
     Mot de passe?
     Super c'est correct !
     
-Note: le -s permet de ne pas afficher le texte saisi par l'utilisateur.
+Note: read -s permet de ne pas afficher le texte saisi par l'utilisateur.
+
+## Exercice 4. Contrôle d’utilisateur
+*1. Écrivez un script qui vérifie l’existence d’un utilisateur dont le nom est donné en paramètre du script. Si le script est appelé sans nom d’utilisateur, il affiche le message : ”Utilisation : nom_du_script nom_utilisateur”, où nom_du_script est le nom de votre script récupéré automatiquement (si vous changez le nom de votre script, le message doit changer automatiquement)*
 
 
 
