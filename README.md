@@ -106,14 +106,14 @@ unset permet de supprimer la variable d'environnement, donc elle n'existera plus
 
 *Écrivez un script testpwd.sh qui demande de saisir un mot de passe et vérifie s’il correspond ou non au contenu d’une variable PASSWORD dont le contenu est codé en dur dans le script. Le mot de passe saisi par l’utilisateur ne doit pas s’afficher.*
  ```bash   
-    PASSWORD="Pwd"
-    read -s -p "Mot de passe?" saisie
+PASSWORD="Pwd"
+read -s -p "Mot de passe?" saisie
 
-    if [ $saisie = $PASSWORD ] ; then
-      echo -e "\nSuper c'est correct !"
-    else
-      echo -e "\nMauvais mot de passe !"
-    fi
+if [ $saisie = $PASSWORD ] ; then
+  echo -e "\nSuper c'est correct !"
+else
+  echo -e "\nMauvais mot de passe !"
+fi
 ``` 
 Il ne faut pas oublier de changer les droits
 
@@ -129,24 +129,24 @@ Note: read -s permet de ne pas afficher le texte saisi par l'utilisateur.
 *Ecrivez un script qui prend un paramètre et utilise la fonction suivante pour vérifier que ce paramètre
 est un nombre réel :*
 ```bash
-    #!/bin/bash
-    
-    function is_number()
-    {
-            re='^[+-]?[0-9]+([.][0-9]+)?$'
-            if ! [[ $1 =~ $re ]] ; then
-                    return 1
-            else
-                    return 0
-            fi
-    }
+#!/bin/bash
 
-    is_number $1
-    if [[ $? = 0 ]] ; then
-            echo "Nombre rationel"
-    else
-            echo "Erreur"
-    fi
+function is_number()
+{
+        re='^[+-]?[0-9]+([.][0-9]+)?$'
+        if ! [[ $1 =~ $re ]] ; then
+                return 1
+        else
+                return 0
+        fi
+}
+
+is_number $1
+if [[ $? = 0 ]] ; then
+        echo "Nombre rationel"
+else
+        echo "Erreur"
+fi
 ```
 Note : $? permet de recuperer le code d'erreur de la fonction précédente. 
 
@@ -156,6 +156,8 @@ Note : $? permet de recuperer le code d'erreur de la fonction précédente.
 
 2 -> erreur n°2
 
+...
+
 ## Exercice 4. Contrôle d’utilisateur
 *Écrivez un script qui vérifie l’existence d’un utilisateur dont le nom est donné en paramètre du script. Si le script est appelé sans nom d’utilisateur, il affiche le message : ”Utilisation : nom_du_script nom_utilisateur”, où nom_du_script est le nom de votre script récupéré automatiquement (si vous changez le nom de votre script, le message doit changer automatiquement)*
 
@@ -164,28 +166,28 @@ Note : $? permet de recuperer le code d'erreur de la fonction précédente.
 
 Note : Rajout passage en parametre d'une borne maximale. $RANDOM envoie un nombre entier compris entre 0 - 32767
 ```bash
-    #!/bin/bash
+#!/bin/bash
 
-    if [ $# -ge 1 ] ; then
-            prix=$(($RANDOM%$1))
-    else
-            prix=$RANDOM
-    fi
+if [ $# -ge 1 ] ; then
+        prix=$(($RANDOM%$1))
+else
+        prix=$RANDOM
+fi
 
-    read -p "Entrez un prix : " reponse
+read -p "Entrez un prix : " reponse
 
-    while [ $prix -ne $reponse ]
-    do
-            if [ $prix -gt $reponse ] ; then
-                    echo "C'est plus !"
-            else
-                    echo "C'est moins !"
-            fi
-            
-            read -p "Entrez un prix : " reponse
-    done
+while [ $prix -ne $reponse ]
+do
+        if [ $prix -gt $reponse ] ; then
+                echo "C'est plus !"
+        else
+                echo "C'est moins !"
+        fi
 
-    echo "C'est gagné !!!!!"
+        read -p "Entrez un prix : " reponse
+done
+
+echo "C'est gagné !!!!!"
 ```
 
 Note : Tableaux Récapitulatif des opérateurs logiques
