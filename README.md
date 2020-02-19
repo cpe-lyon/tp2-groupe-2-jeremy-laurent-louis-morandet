@@ -110,9 +110,9 @@ PASSWORD="Pwd"
 read -s -p "Mot de passe?" saisie
 
 if [ $saisie = $PASSWORD ] ; then
-  echo -e "\nSuper c'est correct !"
+  echo -e "Super c'est correct !"
 else
-  echo -e "\nMauvais mot de passe !"
+  echo -e "Mauvais mot de passe !"
 fi
 ``` 
 Il ne faut pas oublier de changer les droits
