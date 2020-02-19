@@ -164,28 +164,27 @@ Note : $? permet de recuperer le code d'erreur de la fonction précédente.
 
 Note : Rajout passage en parametre d'une borne maximale. $RANDOM envoie un nombre entier compris entre 0 - 32767
 '''
-    #!/bin/bash
+#!/bin/bash
 
-    if [ $# -ge 1 ] ; then
-            prix=$(($RANDOM%$1))
-    else
-            prix=$RANDOM
-    fi
+if [ $# -ge 1 ] ; then
+        prix=$(($RANDOM%$1))
+else
+        prix=$RANDOM
+fi
 
-    read -p "Entrez un prix : " reponse
+read -p "Entrez un prix : " reponse
 
-    while [ $prix -ne $reponse ]
-    do
-            if [ $prix -gt $reponse ] ; then
-                    echo "C'est plus !"
-            else
-                    echo "C'est moins !"
-            fi
+while [ $prix -ne $reponse ]
+do
+        if [ $prix -gt $reponse ] ; then
+                echo "C'est plus !"
+        else
+                echo "C'est moins !"
+        fi
+        read -p "Entrez un prix : " reponse
+done
 
-            read -p "Entrez un prix : " reponse
-    done
-
-    echo "C'est gagné !!!!!"
+echo "C'est gagné !!!!!"
 '''
 
 Note : Tableaux Récapitulatif des opérateurs logiques
