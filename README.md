@@ -105,7 +105,7 @@ unset permet de supprimer la variable d'environnement, donc elle n'existera plus
 ## Exercice 2.  Contrôle de mot de passe
 
 *Écrivez un script testpwd.sh qui demande de saisir un mot de passe et vérifie s’il correspond ou non au contenu d’une variable PASSWORD dont le contenu est codé en dur dans le script. Le mot de passe saisi par l’utilisateur ne doit pas s’afficher.*
- ```   
+ ```bash   
     PASSWORD="Pwd"
     read -s -p "Mot de passe?" saisie
 
@@ -128,7 +128,7 @@ Note: read -s permet de ne pas afficher le texte saisi par l'utilisateur.
 
 *Ecrivez un script qui prend un paramètre et utilise la fonction suivante pour vérifier que ce paramètre
 est un nombre réel :*
-```    
+```bash
     #!/bin/bash
     
     function is_number()
@@ -163,7 +163,7 @@ Note : $? permet de recuperer le code d'erreur de la fonction précédente.
 *Écrivez un script qui génère un nombre aléatoire entre 1 et 1000 et demande à l’utilisateur de le deviner. Le programme écrira ”C’est plus !”, ”C’est moins !” ou ”Gagné !” selon les cas (vous utiliserez $RANDOM).*
 
 Note : Rajout passage en parametre d'une borne maximale. $RANDOM envoie un nombre entier compris entre 0 - 32767
-```
+```bash
     #!/bin/bash
 
     if [ $# -ge 1 ] ; then
