@@ -256,3 +256,70 @@ Opérations logiques :
 | test1 -a  test2 | test1 ET test2 |
 | test1 -o  test2 | test1 OU test2 |
 | ! test | NON test |
+
+
+## Exercice 7. Statistiques
+*1. Écrivez un script qui prend en paramètres trois entiers (entre -100 et +100) et affiche le min, le max
+et la moyenne. Vous pouvez réutiliser la fonction de l’exercice 3 pour vous assurer que les paramètres
+sont bien des entiers.
+2. Généralisez le programme à un nombre quelconque de paramètres (pensez à SHIFT)*
+
+    #!/bin/bash
+    MIN=$1
+    MAX=$1
+    MOY=0
+    AVE=0
+    nb_val=$#
+    for i in $(seq 1 $#)
+    do
+        if [[ $1 -gt 100 || $1 -lt "-100" ]]; then
+            echo "Mauvais paramètre"
+            exit 1
+        else
+        if [ $1 -lt $MIN ]; then
+        MIN=$1;  
+        else
+        MAX=$1;
+        fi
+        AVE=$(($AVE+$1))
+        shift
+        fi
+    done
+        AVE=$(($AVE/$nb_val))
+        echo "Valeur moyenne: "$AVE
+        echo "Valeur max: "$MAX
+        echo "Valeur min: "$MIN
+        
+*3.Modifiez votre programme pour que les notes ne soient plus données en paramètres, mais saisies et
+stockées au fur et à mesure dans un tableau.*
+
+    #!/bin/bash
+
+    MIN=$1
+    MAX=$1
+    MOY=0
+    AVE=0
+    bool=1
+    nb_val=$1
+    for i in $(seq 1 $1);do
+    read -p "Choisissez une valeur:" var
+        if [[ $var -gt 100 || $var -lt "-100" ]]; then
+            echo "Mauvais paramètre"
+            exit 1
+        else
+        if [ $var -lt $MIN ]; then
+        MIN=$var;   
+        else
+        MAX=$var;
+        fi
+        AVE=$(($AVE+$var))
+        shift
+        fi
+    done
+        AVE=$(($AVE/$nb_val))
+        echo "Valeur moyenne: "$AVE
+        echo "Valeur max: "$MAX
+        echo "Valeur min: "$MIN
+        
+## Exercice 8. Pour les plus rapides
+*Écrivez un script qui affiche les combinaisons possibles de couleurs (cf. TP 1) :*
